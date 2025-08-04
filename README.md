@@ -25,6 +25,9 @@ Finall Model was evaluted by both biological validation and Independent test set
 ____
 ####  🏁 Results :
 
+From the LIHC RNA-seq data, we identified 1232 significant differentially expressed genes using Desq2, these genes served as the candidat set for potential PPIs. A heatmap of top 50 significant genes are illustreted below
+<img width="1181" height="682" alt="HEATMAP" src="https://github.com/user-attachments/assets/3b4370c0-28d1-4ae1-8f09-b42bffe21ed8" />
+
 ____
 
 #### 📦 packages used :
