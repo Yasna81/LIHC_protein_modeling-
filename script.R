@@ -302,19 +302,17 @@ ggplot(degs, aes(x = log2FoldChange, y = -log10(padj), color = significance)) +
     )
 
 #network pf prob
-library(igraph)  
-library(visNetwork)  
+ 
 
 library(dplyr)
-
-# Assuming test_df has columns: gene1, gene2, and a prediction score (e.g., 'score')
+#
 top_10_ppis <- test_df %>%
     arrange(desc(pred_prob)) %>%  # Sort by prediction score (highest first)
     head(20) 
-# Keep top 10
+
 library(visNetwork)
 
-# Nodes: Unique genes in top 10 PPIs
+# Nodes: Unique genes in top 20 PPIs
 nodes <- data.frame(
     id = unique(c(top_10_ppis$gene1, top_10_ppis$gene2)),
     label = unique(c(top_10_ppis$gene1, top_10_ppis$gene2))
@@ -333,3 +331,9 @@ visNetwork(nodes, edges) %>%
     visNodes(shape = "dot", size = 20, font = list(size = 20)) %>%
     visEdges(smooth = FALSE, arrows = "none") %>%
     visLayout(randomSeed = 42)  # Consistent layout
+
+
+#github saving 
+
+write.csv(test_df, file = "~/project/output_data.csv", row.names = TRUE)
+write.csv(filterd_ppi_2 , file = "~/project/input_data.csv", row.names = TRUE)
