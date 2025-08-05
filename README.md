@@ -25,8 +25,12 @@ ____
 ####  🏁 Results :
 
 From the LIHC RNA-seq data, we identified 1,232 significant differentially expressed genes using DESeq2; these genes served as the candidate set for potential PPIs. A heatmap of the top 50 significant genes is illustrated below.
+
+
 <img width="1181" height="682" alt="HEATMAP" src="https://github.com/user-attachments/assets/3b4370c0-28d1-4ae1-8f09-b42bffe21ed8" />
 
+
+Figure 1
 
 
 
@@ -79,6 +83,10 @@ ____
 #### 📦 packages used :
 DESeq2 ,STRINGdb ,biomaRt ,GOSemSim, org.Hs.eg.db,pROC ,caret,clusterProfiler,igraph,pheatmap,ggplot2,ggrepel,visNetwork
 
+
+input and output data are available in .csv
+
 -----
 
 #### 🥇 future enhancments:
+
