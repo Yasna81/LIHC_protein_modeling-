@@ -50,7 +50,7 @@ Using STRINGdb high-confidence interactions (combined_score > 900) and GO semant
 
 Figure 3
 
-To assess the biological validation of the model, we conducted gene set enrichment analysis of genes from top-predicted PPIs. KEGG enrichment analysis (Figure C) suggests cancer-related pathways, including cell cycle regulation, spliceosome function, ubiquitin-mediated proteolysis, and TGF-β signaling. Additionally, Coronavirus disease - COVID-19 and neurodegenerative pathways were identified, which share similar pathways with cancers.
+To assess the biological validation of the model, we conducted gene set enrichment analysis of genes from top-predicted PPIs. KEGG enrichment analysis (Figure 4) suggests cancer-related pathways, including cell cycle regulation, spliceosome function, ubiquitin-mediated proteolysis, and TGF-β signaling. Additionally, Coronavirus disease - COVID-19 and neurodegenerative pathways were identified, which share similar pathways with cancers.
 
 <img width="700" height="563" alt="kegg" src="https://github.com/user-attachments/assets/99667b6d-082b-4814-a565-0df8996b5140" />
 
