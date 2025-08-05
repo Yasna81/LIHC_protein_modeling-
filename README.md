@@ -42,7 +42,7 @@ The top upregulated gene included COX7B2 (log2FC = 3.9), while BMP10 (log2FC = -
 
 Figure 2
 
-Using STRINGdb high-confidence interactions (combined_score > 900) and GO semantic similarity, we labeled 519 pairs as interacting (go_sim > 0.6) and 859 as non-interacting (go_sim < 0.4). The logistic regression model trained on co-expression (Pearson) and STRING combined scores achieved an AUC of 0.77 on the test set (Figure B), with a sensitivity of 0.82, specificity of 0.6, and accuracy of 0.72. The top predicted novel interaction was RPL38 and RPL18, with a predicted probability of 0.82 and a combined score of 999.
+Using STRINGdb high-confidence interactions (combined_score > 900) and GO semantic similarity, we labeled 519 pairs as interacting (go_sim > 0.6) and 859 as non-interacting (go_sim < 0.4). The logistic regression model trained on co-expression (Pearson) and STRING combined scores achieved an AUC of 0.77 on the test set (Figure 3), with a sensitivity of 0.82, specificity of 0.6, and accuracy of 0.72. The top predicted novel interaction was RPL38 with RPL18, with a predicted probability of 0.82 and a combined score of 999.
 
 
 <img width="555" height="320" alt="ROC curve" src="https://github.com/user-attachments/assets/81ded011-1a83-48c1-8321-745118aa7a24" />
@@ -81,10 +81,11 @@ Figure 6
 ____
 
 #### 📦 packages used :
-DESeq2 ,STRINGdb ,biomaRt ,GOSemSim, org.Hs.eg.db,pROC ,caret,clusterProfiler,igraph,pheatmap,ggplot2,ggrepel,visNetwork
+
+ DESeq2 ,STRINGdb ,biomaRt ,GOSemSim, org.Hs.eg.db,pROC,caret,clusterProfiler,igraph,pheatmap,ggplot2,ggrepel,visNetwork
 
 
-input and output data are available in .csv
+ ▶️ Input and output data are available in .csv
 
 -----
 
