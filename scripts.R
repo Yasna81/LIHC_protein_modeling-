@@ -324,7 +324,7 @@ edges <- top_10_ppis %>%
         from = gene1,
         to = gene2,
         width = pred_prob * 5,  
-        title = paste("pred_prob:", round(pred_prob, 3))  # Tooltip
+        title = paste("pred_prob:", round(pred_prob, 3))  
     )
 
 visNetwork(nodes, edges) %>%
@@ -337,3 +337,62 @@ visNetwork(nodes, edges) %>%
 
 write.csv(test_df, file = "~/project/output_data.csv", row.names = TRUE)
 write.csv(filterd_ppi_2 , file = "~/project/input_data.csv", row.names = TRUE)
+
+#model evolution 
+library(STRINGdb)
+library(dplyr)
+library(ggplot2)
+
+predicted_ppis <- test_df %>% 
+    filter(combined_score >= 0.7)
+#
+# Initialize 
+string_db <- STRINGdb$new(
+    version = "11.5", 
+    species = 9606,  
+    score_threshold = 900 
+)
+
+
+gene1_mapped <- string_db$map(predicted_ppis, "gene1", removeUnmappedRows = TRUE)
+gene2_mapped <- string_db$map(predicted_ppis, "gene2", removeUnmappedRows = TRUE)
+
+# ensure same order as original data frame
+mapped_ppis <- predicted_ppis %>%
+    mutate(
+        gene1_STRING = gene1_mapped$STRING_id[match(gene1, gene1_mapped$gene1)],
+        gene2_STRING = gene2_mapped$STRING_id[match(gene2, gene2_mapped$gene2)]
+    ) %>%
+    na.omit()  
+
+
+string_interactions <- string_db$get_interactions(
+    c(mapped_ppis$gene1_STRING , mapped_ppis$gene2_STRING ) %>% unique()
+)
+
+high_conf_string <- string_interactions %>%
+    filter(combined_score >= 900) %>%
+    select(from, to, combined_score) %>%
+    distinct()
+#
+
+merged_ppis <- mapped_ppis %>%
+    left_join(
+        high_conf_string,
+        by = c("gene1_STRING" = "from", "gene2_STRING" = "to")
+    ) %>%
+    mutate(
+        is_in_STRING = !is.na(combined_score.y) 
+    )
+
+
+precision <- sum(merged_ppis$is_in_STRING) / nrow(merged_ppis)
+cat("Precision:", precision, "\n")
+
+
+ggplot(merged_ppis, aes(x = is_in_STRING, fill = is_in_STRING)) +
+    geom_bar() +
+    labs(title = "PPI Validation Against STRING", x = "Exists in STRING", y = "Count")
+
+# top 10 ppis 
+write.csv(top_10_ppis, file = "~/project/top_10_ppi.csv")
