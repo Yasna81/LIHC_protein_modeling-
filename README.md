@@ -79,7 +79,7 @@ The PPI network shown below visualizes the top 20 predicted interacting gene pai
 
 Figure 6
 
-To evalute the biological relevence of the predicted protein-protein interactions we preformed validation usining the STRING database (v11.5), gene pairs predicted by the model were matched against SRING interactions with a combined confidencce score > 900. Out of 351 predicted gene pairs (score >900) , 178  were found in STRING high confidence interaction network, resulting in a precision of **25%**. While this may represent false positive arising from computational limitations ( expression without physical interaction) This could reflect novel specific interactions which needs experimental validation to confirm the biological relevence. 
+To evalute the biological relevence of the predicted protein-protein interactions we preformed validation usining the STRING database (v11.5), gene pairs predicted by the model were matched against SRING interactions with a combined confidencce score > 900. Out of 351 predicted gene pairs (score >900) , 178  were found in STRING high confidence interaction network, resulting in a precision of **51%**. While this may represent false positive arising from computational limitations ( expression without physical interaction) This could reflect novel specific interactions which needs experimental validation to confirm the biological relevence. 
 
 
 
